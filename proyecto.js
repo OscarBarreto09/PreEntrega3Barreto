@@ -1,14 +1,3 @@
-/*funciones 
-
-condicionales if swith, ciclos y funcikones, 
-
-Pedir un dato al usuario, meterlo en un if, si es tal cosa u otra cosa, ingresar un numero (while)
-
-Ecommerce, preguntar al usuario, elegir entre estos 5 productos, ingresar un numero, while para validar el dato
-
-ingresast un dato no valido,  utilizar un if o un switch para validar el producto, 
-
-utilizar un while, break */
 
 
 function calcularPrecio (producto, descuento){
