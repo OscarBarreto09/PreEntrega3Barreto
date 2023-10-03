@@ -1,55 +1,74 @@
 
+alert ("Usted se ha ganado un codigo promocional: OSCAR10")
 
+const carroDeCompras = []
 
-const Producto = function(nombre,precio,stock){
-    this.nombre= nombre
-    this.precio = precio
-    this.stock = stock
+function Producto (nombre, precio, marca){
+    this.nombre=nombre;
+    this.precio=precio;
+    this.marca=marca;
 }
 
-let producto1= new Producto ("lenovo", 350000, 20)
-let producto2= new Producto ("lenovo pad", 45500, 26)
-let producto3= new Producto ("macbook", 700000, 45)
-let producto4= new Producto ("apple pad", 350000, 23)
-let producto5= new Producto ("smartwatch", 10000, 10)
+let producto1 = new Producto ("proteina", 250000, "carnivor")
+let producto2 = new Producto ("creatina", 150000, "universal")
+let producto3 = new Producto ("aminoacidos", 180000, "metrx")
+let producto4 = new Producto ("pre-entreno", 150000, "c4")
+let producto5 = new Producto ("multivitaminico", 220000, "animal")
 
-let lista = [producto1,producto2,producto3,producto4,producto5]
+let lista = [producto1, producto2, producto3, producto4, producto5]
 
 
+function precioDelCarrito (){
+    return carroDeCompras.reduce((acumulado,x) => (x.precio+acumulado), 0)
+}
 
-function filtrarProductos(){
-    let palabraClave = prompt("ingresa el producto que deseas buscar").trim().toUpperCase()
-    let resultado = lista.filter((x)=> x.nombre.toUpperCase().includes(palabraClave))
+function agregarAlCarrito (){
+    let pregunta = prompt (`Quieres agregar un producto?`).toLocaleLowerCase()
 
-    if (resultado.length > 0){
-        console.table(resultado)
-    }else{
-        alert("no se encontro ninguna coincidencia con: "+ palabraClave)
+    if (pregunta == "si"){
+        
+        let nuevoProducto = prompt(`Que producto quieres agregar?
+        1. Proteina
+        2. Creatina 
+        3. Aminoacidos
+        4. Pre-Entreno
+        5. Multivitaminico`).toLowerCase().trim();
+    
+        let existe = lista.reduce((acomulado, x) => (x.nombre == nuevoProducto) || acomulado, false)
+    
+        if (existe){
+            let agregar = lista.filter (x => x.nombre == nuevoProducto)
+            carroDeCompras.push(agregar[0])
+            agregarAlCarrito ();
+
+        } else {
+            console.log(existe)
+    
+        alert ("Este producto no se encontro")    
+        agregarAlCarrito()
+        }
     }
-
-}              
-
-filtrarProductos()
-
-function agregarProducto(){
-    let nombre = prompt ("ingresa el nombre del producto").trim()
-    let precio = parseFloat(prompt("ingrese el precio del producto: "))
-    let stock = parseInt(prompt("ingresa el stock del producto: "))
-
-    if(isNaN(precio) || isNaN(stock) || nombre === ""){
-        alert("por favor ingresa valores validos")
-        return
+    else if (pregunta=="no"){
+        let precioFinal = precioDelCarrito();
+        alert(precioFinal==0?"Tu carro de compras esta vacio":"Este es el precio de tus productos : $"+precioFinal+" sin descuento y sin IVA.")
     }
-
-    let producto = new Producto(nombre,precio,stock);
-
-
-    if(lista.some((x)=> x.nombre === producto.nombre)){
-        alert("el producto ya existe")
-        return;
-    } 
-
-    lista.push(producto)
-    console.table(lista)
+    else {
+        alert(`Respuesta Incorrecta`)
+        agregarAlCarrito();
+    }
 
 }
+
+
+agregarAlCarrito()
+
+
+let codigo = prompt ("Ingrese su codigo promocional (si NO tiene, escriba NO)")
+
+if (codigo=="OSCAR10"){
+    alert ("El precio de sus productos es de $"+ (precioDelCarrito ()*0.9*1.16 ))
+}
+else{
+    alert  ("El precio de sus productos es de $"+ (precioDelCarrito()*1.16))
+}
+
