@@ -2,9 +2,9 @@
 
 
 const Producto = function(nombre,precio,stock){
-    this.nombre= nombre,
+    this.nombre= nombre
     this.precio = precio
-    this. stock = stock
+    this.stock = stock
 }
 
 let producto1= new Producto ("lenovo", 350000, 20)
@@ -19,7 +19,7 @@ let lista = [producto1,producto2,producto3,producto4,producto5]
 
 function filtrarProductos(){
     let palabraClave = prompt("ingresa el producto que deseas buscar").trim().toUpperCase()
-    let resultado = lista.filter((producto)=> producto.nombre.toUpperCase().includes(palabraClave))
+    let resultado = lista.filter((x)=> x.nombre.toUpperCase().includes(palabraClave))
 
     if (resultado.length > 0){
         console.table(resultado)
@@ -28,6 +28,8 @@ function filtrarProductos(){
     }
 
 }              
+
+filtrarProductos()
 
 function agregarProducto(){
     let nombre = prompt ("ingresa el nombre del producto").trim()

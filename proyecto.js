@@ -1,5 +1,4 @@
 
-
 function calcularPrecio (producto, descuento){
     return producto[1]*1.16*(1-descuento)
 }
