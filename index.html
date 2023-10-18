@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>JavaScript</title>
 </head>
 
 <body>
+
+<div class="pagina">
+
+    <h1>Bienvenido a la Tienda</h1>
+
+    <div id="productos">
+        <h2>Productos</h2>
+        <button onclick="agregarAlCarrito('Proteina', 250000)">Agregar Proteina</button>
+        <button onclick="agregarAlCarrito('Creatina', 150000)">Agregar Creatina</button>
+        <button onclick="agregarAlCarrito('Aminoacidos', 180000)">Agregar Aminoacidos</button>
+        <button onclick="agregarAlCarrito('Pre-entreno', 150000)">Agregar Pre-entreno</button>
+        <button onclick="agregarAlCarrito('Multivitaminicos', 220000)">Agregar Multivitaminicos</button>
+    </div>
+    
+
+    <div id="carrito">
+        <h2>Carrito de Compras</h2>
+        <ul id="lista-carrito"></ul>
+        <p>Total: $<span id="total">0</span></p>
+        <label for="cupon">Cupón de Descuento:</label>
+        <input type="text" id="cupon">
+        <button onclick="aplicarDescuento()">Aplicar Descuento</button>
+        <button onclick="realizarCompra()">Finalizar Compra</button>
+        <button onclick="limpiarCarrito()">Limpiar Carrito</button>
+    
+    </div>
+
+
+
+</div>
+
+
+
 
     <script src="main.js"></script>
 </body>
