@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Bowlby+One&family=Seymour+One&display=swap');
+
+
+
+body{
+  background-color: #272B33;
+}
+
+.fondo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../assets/rick-2.jpg");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size:auto;
+  height: 50vh;
+}
+
+#personajes{
+  background-color: #272B33;
+  margin-top: 100px;
+}
+
+.titulo{
+  color: #272B33;
+  font-weight: bold;
+  font-family: 'Seymour One', sans-serif;
+  font-size: 5rem;
+}
+
+.tituloBoton{
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  height: 60px;
+}
+
+.btn-primary{
+  margin-top: 20px;
+  width: 200px;
+  height: 60px;
+  background: #272B33;
+  color: white;
+  border:#272B33; 
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  font-weight: bold;
+  border-width: 2px;
+}
+.btn-primary:hover {
+  color: #272B33;
+  font-weight: bold;/* color de fuente hover */
+}
+.btn-primary::after {
+  content: "";
+  background: white; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 10px 30px;
+  display: block;
+  border-radius: 50%;
+  left: -50%;
+  right: -50%;
+  top: -150%;
+  bottom: -150%;
+  transform: scale(0, 0);
+  transition: all 0.4s ease;
+}
+.btn-primary:hover::after {
+  transition: all 1.0s ease-out;
+  transform: scale(1, 1);
+}
+
+
+.cardPersonajes{
+  background-color: rgb(32,35,41);
+}
+
+.tituloCarta{
+  color: white;
+  font-family: 'Bowlby One', sans-serif;
+}
+
+
+.tituloOffCanvas{
+  font-family:'Bevan', serif;
+  text-decoration: underline;
+}
+.titutloPrecio{
+  color: white;
+  font-weight: bold;
+}
+
+.descripcion{
+  color: rgb(158, 158, 158);
+}
+
+.tituloCarta2{
+  color: #272B33;
+  font-family:'Bowlby One', sans-serif;
+}
+
+.miniCarta{
+  border-color: #272B33;
+  border-width: 2px;
+}
+
+.botones{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.precioFinal{
+  font-family:'Bowlby One', sans-serif;
+  font-weight: bold;
+  font-size: 15pt;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
