@@ -27,17 +27,17 @@ const precios = {
 };
 
 fetch(url)
-  .then((response) => response.json())
+  .then((respuesta) => respuesta.json())
   .then((data) => {
     const characters = data.results;
-    let currentContainer;
+    let contenedor;
 
     characters.forEach((character, index) => {
       if (index % 4 === 0) {
-        currentContainer = document.createElement("div");
-        currentContainer.className =
+        contenedor = document.createElement("div");
+        contenedor.className =
           "row mt-6 mb-5 d-flex justify-content-around";
-        container.appendChild(currentContainer);
+        container.appendChild(contenedor);
       }
 
       const price = precios[index + 1] || 1000;
@@ -58,7 +58,7 @@ fetch(url)
         </div>
       `;
 
-      currentContainer.appendChild(card);
+      contenedor.appendChild(card);
 
       const addToCartBtn = card.querySelector(".addToCartBtn");
       addToCartBtn.addEventListener("click", () => addToCart(character, price));
