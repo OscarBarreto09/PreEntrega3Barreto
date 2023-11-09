@@ -1,7 +1,7 @@
 const url = "https://rickandmortyapi.com/api/character/?page=19";
 const container = document.getElementById("personajes");
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-let precioTotal = 0; // Variable para almacenar el precio total
+let precioTotal = 0; 
 
 const precios = {
   1: 500000,
@@ -67,9 +67,9 @@ fetch(url)
 
 function addToCart(character, price) {
   carrito.push({ character, price });
-  precioTotal += price; // Sumar el precio al precio total
+  precioTotal += price; 
 
-  // Guardar en localStorage (conversión a cadena JSON)
+  
   localStorage.setItem('carrito', JSON.stringify(carrito));
 
   Swal.fire({
@@ -97,10 +97,9 @@ function addToCart(character, price) {
       </div>
     </div>
   `;
-
   offcanvasBody.appendChild(miniCard);
 
-  // Actualizar el elemento con el ID "precioTotal"
+  
   const precioTotalElement = document.getElementById("precioTotal");
   precioTotalElement.innerHTML = `Precio Total: $${precioTotal}`;
 }
@@ -112,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const carritoElement = document.getElementById("carrito");
 
   eliminarBtn.addEventListener("click", () => {
-    // Mostrar Sweet Alert de confirmación
+
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Esta acción eliminará todos los elementos del carrito.',
@@ -124,16 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Eliminar todos los elementos del carrito
+
         carritoElement.innerHTML = "";
         
-        // Reiniciar el precio total
+
         precioTotal = 0;
 
-        // Limpiar el localStorage
+
         localStorage.removeItem('carrito');
 
-        // Mostrar Sweet Alert
+
         Swal.fire({
           position: "center",
           icon: "success",
@@ -142,19 +141,19 @@ document.addEventListener("DOMContentLoaded", () => {
           timer: 1500
         });
 
-        // Actualizar el elemento con el ID "precioTotal"
+
         const precioTotalElement = document.getElementById("precioTotal");
         precioTotalElement.innerHTML = `Precio Total: $${precioTotal}`;
       }
     });
   });
 
-  // Agregar botón "Finalizar Compra"
+
   const finalizarCompraBtn = document.getElementById("finalizarCompra");
   finalizarCompraBtn.innerHTML = '<button class="btn btn-success">Finalizar Compra</button>';
 
   finalizarCompraBtn.addEventListener("click", () => {
-    // Mostrar Sweet Alert de confirmación
+
     Swal.fire({
       title: '¿Finalizar compra?',
       text: '¿Estás seguro de finalizar la compra?',
@@ -166,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Mostrar Sweet Alert con el precio final
+ 
         Swal.fire({
           title: '¡Compra Finalizada!',
           text: `El precio total de la compra es: $${precioTotal}`,
@@ -174,15 +173,14 @@ document.addEventListener("DOMContentLoaded", () => {
           confirmButtonColor: '#28a745'
         });
 
-        // Eliminar las mini cards y el carrito de compras
+      
         carrito = [];
         localStorage.removeItem('carrito');
         carritoElement.innerHTML = "";
 
-        // Reiniciar el precio total
+
         precioTotal = 0;
 
-        // Actualizar el elemento con el ID "precioTotal"
         const precioTotalElement = document.getElementById("precioTotal");
         precioTotalElement.innerHTML = `Precio Total: $${precioTotal}`;
       }
